@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Zmiana wyglądu diva</title>
+  <style>
+    #tekst {
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    /* Klasy zmieniające wygląd */
+    .kolorNiebieski {
+      background-color: lightblue;
+    }
+
+    .duzyTekst {
+      font-size: 30px;
+    }
+
+    .innaCzcionka {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    button {
+      margin-right: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tekst">Kliknij przycisk, by zmienić wygląd</div>
+
+  <button onclick="zmienKolor()">Zmień kolor</button>
+  <button onclick="zmienRozmiar()">Zmień rozmiar</button>
+  <button onclick="zmienCzcionke()">Zmień czcionkę</button>
+  <button onclick="resetuj()">Resetuj</button>
+
+  <script>
+    const div = document.getElementById("tekst");
+
+    function zmienKolor() {
+      div.classList.remove("kolorNiebieski"); // upewniamy się, że nie ma duplikatu
+      div.classList.add("kolorNiebieski");
+    }
+
+    function zmienRozmiar() {
+      if (div.classList.contains("duzyTekst")) return;
+      div.classList.add("duzyTekst");
+    }
+
+    function zmienCzcionke() {
+      div.classList.replace("innaCzcionka", "innaCzcionka"); // jeśli już jest, to zostaje
+      if (!div.classList.contains("innaCzcionka")) {
+        div.classList.add("innaCzcionka");
+      }
+    }
+
+    function resetuj() {
+      div.classList.remove("kolorNiebieski", "duzyTekst", "innaCzcionka");
+    }
+  </script>
+
+</body>
+</html>
